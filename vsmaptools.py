@@ -6,6 +6,7 @@ Tool to read Vintage Story map database and export as PNG.
 """
 
 import json
+import multiprocessing
 import sqlite3
 import sys
 import time
@@ -317,6 +318,8 @@ def profiled_main() -> None:
 
 
 if __name__ == "__main__":
+    # Call this first, before any other significant code in this block
+    multiprocessing.freeze_support()
     parser = ArgumentParser()
     parser.add_argument(
         "--profile", action="store_true", help="Enable profiling with cProfile"
